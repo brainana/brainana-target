@@ -46,9 +46,9 @@ try {
   await page.getByRole('button', { name: 'Try the macaque demo', exact: true }).waitFor()
   url = new URL(page.url()).origin
   const identity = await desktop.evaluate(({ app }) => ({ name: app.getName(), version: app.getVersion(), packaged: app.isPackaged }))
-  assert.deepEqual(identity, { name: 'BrainanaTarget', version: '0.1.85', packaged: true })
+  assert.deepEqual(identity, { name: 'BrainanaTarget', version: JSON.parse(await fs.readFile('package.json','utf8')).version, packaged: true })
   assert.equal(await page.evaluate(() => typeof globalThis.require), 'undefined')
-  assert.equal((await (await fetch(url + '/api/version')).json()).version, '0.1.85')
+  assert.equal((await (await fetch(url + '/api/version')).json()).version, JSON.parse(await fs.readFile('package.json','utf8')).version)
   await page.getByRole('combobox',{name:'Planning task',exact:true}).selectOption('direct')
   await page.getByRole('combobox',{name:'Species',exact:true}).selectOption('marmoset')
   await page.getByRole('textbox',{name:'Project name',exact:true}).fill('Single home test')

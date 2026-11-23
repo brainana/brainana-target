@@ -25,6 +25,9 @@ for (const file of ['apps/planner/desktop.mjs', 'apps/planner/dist/index.html', 
   assert.ok(entries.some(entry => entry.endsWith('/' + file)), `Missing packaged file ${file}`)
 }
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex')
+for (const name of ['LICENSE', 'NOTICE.txt']) {
+  assert.equal(hash(await fs.readFile(path.join(resources, name))), hash(await fs.readFile(name)))
+}
 const ct = 'demo_viewer/nmt2sym/tpl-NMT2Sym_res-05_desc-MEBRAINS_CT.nii.gz'
 const packagedCT = await fs.readFile(path.join(resources, ct))
 assert.equal(hash(packagedCT), hash(await fs.readFile(path.join('datasets', ct))), 'Bundled CT must match source')

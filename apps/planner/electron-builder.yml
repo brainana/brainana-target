@@ -25,6 +25,10 @@ extraResources:
     to: demo_viewer
   - from: apps/planner/build/icon.png
     to: icon.png
+  - from: LICENSE
+    to: LICENSE
+  - from: NOTICE.txt
+    to: NOTICE.txt
 electronLanguages: [en-US]
 artifactName: brainana-target-${version}-${arch}.${ext}
 mac:

@@ -9,9 +9,18 @@ const profile = await fs.mkdtemp(path.join(os.tmpdir(), 'brainana-target-ci-'))
 let desktop
 try {
   const args = ['--desktop-test-profile', profile]
-  if (process.env.CI) args.push('--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader')
+  if (process.env.CI) args.push('--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--disable-backgrounding-occluded-windows', '--disable-renderer-backgrounding', '--disable-background-timer-throttling')
   desktop = await electron.launch({ executablePath: report.binary, args, timeout: 90000 })
   const page = await desktop.firstWindow()
+  await desktop.evaluate(({ app, BrowserWindow }) => {
+    const window = BrowserWindow.getAllWindows()[0]
+    if (window.isMinimized()) window.restore()
+    window.setContentSize(1280, 800)
+    window.show()
+    window.focus()
+    if (process.platform === 'darwin') app.focus({ steal: true })
+  })
+  await page.bringToFront()
   page.setDefaultTimeout(30000)
   const errors = []
   page.on('pageerror', error => errors.push(error.message))
@@ -34,7 +43,9 @@ try {
     return !!gl && !gl.isContextLost()
   })
   assert.ok(webgl, 'The 3D viewer must have a live WebGL2 context')
-  await page.screenshot({ path: 'artifacts/validation/demo.png' })
+  await page.getByText('Autosaved locally', { exact: true }).waitFor({ timeout: 60000 })
+  await page.bringToFront()
+  await page.screenshot({ path: 'artifacts/validation/demo.png', timeout: 60000 })
   const origin = new URL(page.url()).origin
   const runtime = await (await fetch(origin + '/api/version')).json()
   assert.equal(runtime.version, pkg.version)
