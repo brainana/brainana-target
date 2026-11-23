@@ -1,0 +1,30 @@
+#app.evaluation-root{display:flex;flex-direction:column;min-height:0;height:100dvh;overflow:hidden}
+.evaluation-root>.topbar{min-height:66px;flex:none}
+.evaluation-body{display:grid;grid-template-columns:clamp(230px,25vw,320px) minmax(0,1fr);min-height:0;flex:1}
+.evaluation-sidebar{display:flex;flex-direction:column;min-height:0;min-width:0;background:var(--panel);border-right:1px solid var(--border-2)}
+.evaluation-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:10px 12px;border-bottom:1px solid var(--border);flex:none}
+.evaluation-steps button{min-width:0;padding:6px;overflow-wrap:anywhere}
+.evaluation-steps button[aria-pressed="true"]{background:var(--accent-glow);border-color:var(--accent);font-weight:600}
+.evaluation-inspector{overflow:auto;min-height:0;padding:0 14px 12px;overflow-wrap:anywhere}
+.evaluation-inspector .control-section{display:grid;gap:8px}
+.evaluation-inspector select{max-width:100%}
+.evaluation-inspector details .evaluation-check{padding:4px 0}
+.evaluation-check{display:flex;align-items:flex-start;gap:8px;overflow-wrap:anywhere}
+.evaluation-check input{margin-top:3px;flex:none}
+.evaluation-views{display:flex;min-height:0;min-width:0}
+.evaluation-view{flex:1}
+.evaluation-view:first-child{flex:0 0 var(--slice-width,47%)}
+.evaluation-view>header{height:auto;min-height:41px;display:grid;gap:5px;padding:6px 10px;align-content:start}
+.evaluation-view-heading{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;min-height:28px}
+.evaluation-view-heading button{padding:4px 7px;font-size:11px}
+.evaluation-view-controls{padding:0}
+.evaluation-view-controls .field{display:flex;flex-direction:row;align-items:center;gap:8px}
+.evaluation-divider{width:7px;background:var(--border-2);cursor:col-resize;touch-action:none;flex:none}
+.evaluation-divider:focus,.evaluation-divider:hover{background:var(--accent)}
+.evaluation-status,.evaluation-error{padding:7px 16px;background:var(--panel);font-size:12px}
+.evaluation-status{border-top:1px solid var(--border);text-align:right}
+.evaluation-error{color:var(--danger);max-height:110px;overflow:auto}
+@media(max-width:780px){.evaluation-views{flex-direction:column}.evaluation-divider{width:auto;height:7px;cursor:row-resize}}
+@media(max-width:1100px){.evaluation-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.workspace-loading { position:absolute; inset:0; display:grid; place-content:center; padding:24px; background:var(--bg,#141820); color:var(--text,#edf2f7); z-index:5; }

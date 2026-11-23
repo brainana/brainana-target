@@ -1,0 +1,229 @@
+[
+  {
+    "file": "atlas-ARM1.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM1.tsv",
+    "sha256": "d41d06f2ce066a1982b9d61efcee3159989940733fbc01852e19acbe2df3fd86"
+  },
+  {
+    "file": "atlas-ARM1_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM1_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "2a0419c553a2c5d545ce7a4ba916c7f56400d12b85681a9bed3d25346e373739"
+  },
+  {
+    "file": "atlas-ARM2.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM2.tsv",
+    "sha256": "ab3087fcd496ca7edc37ab508ecca865c541f53452d77bfe931295e922f1ac9d"
+  },
+  {
+    "file": "atlas-ARM2_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM2_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "6afaf80ff4dd35d9868d2de54bca8e4f0e57d5f01e29cadf0514fe091428576a"
+  },
+  {
+    "file": "atlas-ARM3.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM3.tsv",
+    "sha256": "1f23f8768bae8503ec6740ecedb9344da72ab39a02dcad1f4dd26193cb8fd465"
+  },
+  {
+    "file": "atlas-ARM3_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM3_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "01faa9e3c7e36f7db9d2172cbf6615ffa4b444dbb2f0120b32e50ce296008408"
+  },
+  {
+    "file": "atlas-ARM4.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM4.tsv",
+    "sha256": "74d570b0ae653fd3d72f8bc4af8580add16c77bb3c47a0ba63c82c0151b9f984"
+  },
+  {
+    "file": "atlas-ARM4_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM4_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "5f30ecf4ba16514468735b90133e7da9e3a8f9953b88e4f50bd3b774aa8321f3"
+  },
+  {
+    "file": "atlas-ARM5.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM5.tsv",
+    "sha256": "720471729fe323eb85a92d1c94843ccefab717c0912bd743baf1989ada91e514"
+  },
+  {
+    "file": "atlas-ARM5_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM5_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "43a6e5276ea8ddcb72afc053f82dc75bfd40539e74323516bbb9672a75233103"
+  },
+  {
+    "file": "atlas-ARM6.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM6.tsv",
+    "sha256": "de44fd55fe01aebb9b9b83ae26bf04bedbcc939cd1d115a9d6a6d31709629517"
+  },
+  {
+    "file": "atlas-ARM6_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/atlas-ARM6_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "d0934a750e82e011f130a56fefc4b312a0e2c41f52128b5560473dd0099b1ec3"
+  },
+  {
+    "file": "atlas-CortHierarchy_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/CortHierarchy/atlas-CortHierarchy_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "5eccd62b5da8653d3f2527264cd9d498df8cfee9b9cf722033d92c869188eb79"
+  },
+  {
+    "file": "atlas-D99.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/D99/atlas-D99.tsv",
+    "sha256": "d623e0029f8b964b26d1b28c1015dab6752b5e487637834cbbfe82af39ddb863"
+  },
+  {
+    "file": "atlas-D99_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/D99/atlas-D99_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "e5a560f9ec9cff8c3c565eca0c2e6a762245c188e19ff51db7e07d771cabf5ed"
+  },
+  {
+    "file": "atlas-FuncConnGrad_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/FuncConnGrad/atlas-FuncConnGrad_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "4b42fb36f62badadd96377e9e7eb467beae0681c339c1232d96010d2c7897a9a"
+  },
+  {
+    "file": "atlas-FuncNetwork.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/FuncNetwork/atlas-FuncNetwork.tsv",
+    "sha256": "a642a4da5c16bbd5dba4ce1a6c5c21c640a7169c7e7c9a3538675ef375f983d5"
+  },
+  {
+    "file": "atlas-FuncNetwork_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/FuncNetwork/atlas-FuncNetwork_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "b808b209309be8c15081c41cd7b8fc91011c2102a87c1e8bdf75bc5342d00a8a"
+  },
+  {
+    "file": "atlas-MacBNA.tsv",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/MacBNA/atlas-MacBNA.tsv",
+    "sha256": "bdb6e587f6beff7aaadad7350ca62db88db5e7b03a690f9d077255bd17c6fe77"
+  },
+  {
+    "file": "atlas-MacBNA_space-NMT2Sym_res-05.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/MacBNA/atlas-MacBNA_space-NMT2Sym_res-05.nii.gz",
+    "sha256": "9b5bbd77dcb47c025328530ed19f671b1a1c5afa7399baa2a5c8b255c392035d"
+  },
+  {
+    "file": "atlas-retinotopy.md",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/retinotopy/atlas-retinotopy.md",
+    "sha256": "c34f869a15f6a83d32ae19762ce6b39638ef8f08f03e71a378b644c65db9ef28"
+  },
+  {
+    "file": "atlas-retinotopy_space-NMT2Sym_hemi-lh.func.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/atlas/atlas-retinotopy_space-NMT2Sym_hemi-lh.func.gii",
+    "sha256": "f568dee76ae71cb6260524b4bfbd2e36ecdf34284821eeb7b04785eea65570f4"
+  },
+  {
+    "file": "atlas-retinotopy_space-NMT2Sym_hemi-rh.func.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/atlas/atlas-retinotopy_space-NMT2Sym_hemi-rh.func.gii",
+    "sha256": "cb01a6c79bc1308c7041776743a1b7a2c02ad0df2ab27175a000758e5a9cd173"
+  },
+  {
+    "file": "atlas-retinotopy_space-NMT2Sym_res-1.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/retinotopy/atlas-retinotopy_space-NMT2Sym_res-1.nii.gz",
+    "sha256": "11182f938e8750340717c9de9e9fe12c3308747e0a8aee8d21e2630754d96e49"
+  },
+  {
+    "file": "atlas-somatotopy.md",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/somatotopy/atlas-somatotopy.md",
+    "sha256": "bb4a8c3a9cc465b8b73b60963b9c7c4ff00a4d1e0a5f666fdb899de93e86d36c"
+  },
+  {
+    "file": "atlas-somatotopy_space-NMT2Sym_hemi-lh.func.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/atlas/atlas-somatotopy_space-NMT2Sym_hemi-lh.func.gii",
+    "sha256": "0da796e50a855bd85c5a512edfc3cb96b1d76256a03c98d00ddd7797e0b4c46c"
+  },
+  {
+    "file": "atlas-somatotopy_space-NMT2Sym_hemi-rh.func.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/atlas/atlas-somatotopy_space-NMT2Sym_hemi-rh.func.gii",
+    "sha256": "3cea1e0be946cf1aa40f35210a498b56ad3905dfdf8b2b87a23fcb598e3dba76"
+  },
+  {
+    "file": "atlas-somatotopy_space-NMT2Sym_res-1.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/somatotopy/atlas-somatotopy_space-NMT2Sym_res-1.nii.gz",
+    "sha256": "80dd7e1b5378b69cdadf760a6375db9689ee4081f6af85e175816374af99d78c"
+  },
+  {
+    "file": "lh.pial.surf.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/surf/lh.pial.surf.gii",
+    "sha256": "2ff3bc1049807c5783bf71952d1b681717ed0c3f776ac377754f2107211c1b07"
+  },
+  {
+    "file": "lh.white.surf.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/surf/lh.white.surf.gii",
+    "sha256": "c47118432b43e634a7549341992bb8c0403e8ed6873c9820a623210b164ee157"
+  },
+  {
+    "file": "ARM-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/ARM/references.bib",
+    "sha256": "a16965bbe01bb486b7323a5143c1395c19b435db3835aa456ec95979f48373db"
+  },
+  {
+    "file": "CortHierarchy-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/CortHierarchy/references.bib",
+    "sha256": "5e7835001a8941e5f5272a6623bc53651cf836fd102de3b124258ab1bb88ec0e"
+  },
+  {
+    "file": "D99-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/D99/references.bib",
+    "sha256": "411d37f7f5fe4f03d929ba880b1340a29e45e901b0005e4f86291377f3477c8f"
+  },
+  {
+    "file": "FuncConnGrad-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/FuncConnGrad/references.bib",
+    "sha256": "1f07132268095512e9e5b2bd4c17c9fa585da166a422b3d4d34c2aff16d7f894"
+  },
+  {
+    "file": "FuncNetwork-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/FuncNetwork/references.bib",
+    "sha256": "502b1f9f0d127dfc6661ab8b2c9bdbdbcc5a9d08090b3dc708b3912ad30ebe26"
+  },
+  {
+    "file": "MacBNA-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/MacBNA/references.bib",
+    "sha256": "6855c31f8747ea040ae747da652d9a18f5c2a94b0c91f5445d20c20de6e2edd3"
+  },
+  {
+    "file": "retinotopy-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/retinotopy/references.bib",
+    "sha256": "fcde541d33124b17db1e6805fdf6c8df957d5149d4268e0e822fd1204c88d172"
+  },
+  {
+    "file": "somatotopy-references.bib",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/atlas/somatotopy/references.bib",
+    "sha256": "eb2f785e99be2f686de18f808fbcdc4490aab5bc6c34e0dc0b357b524656a99a"
+  },
+  {
+    "file": "rh.pial.surf.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/surf/rh.pial.surf.gii",
+    "sha256": "bf4f0297e7b51caf74a76abb21e8717eb19410888bd7581530cfd3f2642cef19"
+  },
+  {
+    "file": "rh.white.surf.gii",
+    "source": "https://raw.githubusercontent.com/xingyu-liu/macaque_template_surfaces/ec643e553c1e050b6daf850186d3a16a8f681434/sub-NMT2Sym/surf/rh.white.surf.gii",
+    "sha256": "0784816e08d0419a7fba6e42bfc14f2ee620d38965fab3106e011030dadf948e"
+  },
+  {
+    "file": "tpl-NMT2Sym_res-05_T1w.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/template/NMT2Sym/tpl-NMT2Sym_res-05_T1w.nii.gz",
+    "sha256": "4f0634b517e401c0e59c5c35680419118edbe59298e4b1d3c6640f04921e60a6"
+  },
+  {
+    "file": "tpl-NMT2Sym_res-05_T1w_brain.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/template/NMT2Sym/tpl-NMT2Sym_res-05_T1w_brain.nii.gz",
+    "sha256": "3f2895567d54b2562229d4e1b6ab686ada3ac426e59b4af48a52dabdab981217"
+  },
+  {
+    "file": "tpl-NMT2Sym_res-05_brainmask.nii.gz",
+    "source": "https://raw.githubusercontent.com/brainana/brainana/f8d5e5e650974db289fa3fc26a565ae32daa7cda/template_zoo/template/NMT2Sym/tpl-NMT2Sym_res-05_brainmask.nii.gz",
+    "sha256": "95a467bde9ae7f6099c28c5627c514b9b0ec89b037ba7bb5bf9e8beec23f1007"
+  },
+  {
+    "file": "tpl-NMT2Sym_res-05_desc-MEBRAINS_CT.nii.gz",
+    "source": "https://doi.org/10.1162/imag_a_00077",
+    "transform": "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/warps/final/MEBRAINS_to_NMTv2.0-0.5mm-sym_CompositeWarp.nii.gz",
+    "sha256": "88e13fb7bd700d33dd614f69e700fda0dd56bef61884c812785419ec41985590",
+    "derivation": "tpl-NMT2Sym_res-05_desc-MEBRAINS_CT.json",
+    "license": "CC-BY-4.0; credit Balan et al. and RheMAP authors",
+    "transform_components": [
+      "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/warps/linear/NMTv2.0-0.5mm-sym_to_MEBRAINS_affine_0GenericAffine.mat",
+      "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/warps/nonlinear/NMTv2.0-0.5mm-sym_to_MEBRAINS_1InverseWarp.nii.gz"
+    ]
+  }
+]

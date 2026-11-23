@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BrainanaTarget</title><link rel="icon" type="image/png" href="/icon.png">
+<style>
+  body { margin: 0; }
+  #startup-home { color:#edf2f7; background:#141820; font-family:system-ui,sans-serif; min-height:100vh; padding:32px; }
+  #startup-home a { color:#9acbff; }
+</style>
+</head>
+<body><div id="app">
+  <main id="startup-home">
+    <h1>BrainanaTarget</h1>
+    <h2>Plan targeting</h2>
+    <p>Opening planning tools…</p>
+    <p><a href="?workspace=evaluate">Evaluate placement</a></p>
+    <p id="startup-help" hidden role="alert">The workspace could not start. <a href="/">Reload Home</a>.</p>
+    <noscript><p>Enable JavaScript to load planning and evaluation tools.</p></noscript>
+  </main>
+</div>
+<script>
+  // Keep this independent of the bundled modules, so a failed download or a stale cache has visible recovery.
+  (function () {
+    function showHelp() {
+      var help = document.getElementById('startup-help');
+      if (help) help.hidden = false;
+    }
+    window.addEventListener('error', function (event) {
+      if (event.target.tagName === 'SCRIPT') showHelp();
+    }, true);
+    window.setTimeout(showHelp, 8000);
+  }());
+</script>
+<script type="module" src="/src/entry.ts"></script>
+</body></html>

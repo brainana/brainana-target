@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": [
+    "packages/core-client",
+    "packages/ui",
+    "packages/niivue-kit",
+    "packages/imaging-math",
+    "apps/planner/src",
+    "packages/planning-core",
+    "packages/brainana-data"
+  ]
+}

@@ -1,0 +1,21 @@
+name: Early-alpha feedback
+description: Tell us what is useful, confusing, missing or unnecessary.
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: What would you use the app for?
+    validations:
+      required: true
+  - type: textarea
+    id: useful
+    attributes:
+      label: What was useful?
+  - type: textarea
+    id: confusing
+    attributes:
+      label: What was confusing or not useful?
+  - type: textarea
+    id: changes
+    attributes:
+      label: What would you add, change or remove?

@@ -1,0 +1,14 @@
+Brainana Target
+Copyright the Brainana Developers.
+
+Application source: AGPL-3.0-only; see LICENSE.
+Shared runtime, viewer integration and imaging utilities originated in Brainana Viewer.
+https://github.com/brainana/brainana-viewer
+
+NiiVue, Electron, Node.js, OpenSSH-related dependencies, fonts and other third-party libraries retain their own licenses. Packaged Electron distributions include Electron/Chromium third-party notices. Font notices are in packages/ui/fonts.
+
+Demo data are not relicensed under the application license. NMT2Sym anatomy, ARM/D99/MacBNA and functional maps, and cortical surfaces retain their original licenses and attribution requirements. datasets/demo_viewer/nmt2sym/sources.json records source URLs and checksums, and the .bib files provide references.
+
+The MEBRAINS CT originates from Balan et al., MEBRAINS 1.0, Imaging Neuroscience (2024), https://doi.org/10.1162/imag_a_00077, CC BY 4.0. The NMT-space estimate uses the published RheMAP transforms by Sirmpilatze and Klink. See datasets/demo_viewer/nmt2sym/MEBRAINS-CT.md and its JSON derivation sidecar.
+
+The approved monochrome Brainana Target icon was created with OpenAI image generation and prepared in PNG, ICNS and ICO formats. See branding/README.md.

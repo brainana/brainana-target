@@ -1,0 +1,17 @@
+# BrainanaTarget 0.1.58 · placement evaluation
+
+BrainanaTarget opens with **Plan targeting** and **Evaluate placement**. Evaluation uses the same local web runtime and medical-image libraries as the planner. It has separate state and does not write to the planner's autosave or modify imported files. The NMT viewer's Python scripts, server, and template/subject data are not distributed with BrainanaTarget.
+
+To compare a case:
+
+1. Open a saved `.brainana-plan`. Evaluation uses its checksummed reference image and applied shaft paths, including chamber-free devices. Each shaft is selectable separately. Named pial/white surfaces saved in the plan are reused when available.
+2. Import an already aligned postoperative CT for visual context and a NIfTI mask for each measured electrode you want to assess. The mask should contain only one electrode, with stray islands removed. Import pial or white-matter meshes in the same RAS millimetre space if the plan lacks them.
+3. Inspect the original mask, fitted shaft, and linked slices. Select A or B as the measured tip and verify it against the images.
+4. Match the measured electrode to a planned shaft and confirm the subject and registration. These confirmations are per track; choosing a different endpoint clears the tip confirmation. A different reference image clears the previous case's measurements.
+5. Read the tip displacement, signed error along the planned direction, lateral error, angular difference, and path spans. Export a JSON report with the coordinates, metrics, fit diagnostics, source names, and file checksums.
+
+Evaluation can also review a measured case without a plan. **Open NMT-share ZIP** imports the NMT2Sym template, matching template-space track masks, pial/white surfaces, and available brain mask and surface metrics. Native-space tracks and CT volumes are not auto-mixed into the template view; add the relevant aligned CT explicitly. The included NMT examples contain multiple subjects and are useful for inspection; a common template is not evidence that any track belongs to the saved plan's subject.
+
+The measured path is an orthogonal straight-line fit to the positive mask voxel centres in physical space. Its span runs between the extreme projected voxel centres. RMS shows dispersion about the fitted line; it is not a localization uncertainty or registration accuracy estimate. Cortical distance is the shortest distance from the selected fitted endpoint to a triangle on the displayed cortical surface. The patch shows the nearby surface around that closest point. Neither the mask's fitted start nor the nearest cortical point is necessarily the actual surgical entry. Brain clipping and displayed shaft diameter change the rendering only. Target distance, when present, is to the saved target point.
+
+The first integration includes linked MRI slices and CT/mask overlays, original ROI and full/brain-clipped fitted shaft display, pial/white and hemisphere visibility, NMT curvature/sulcal shading, cortical endpoint patches, resizable viewing areas, PNG export, and plan comparison. NMT v16's hemisphere reflection, directional translucency, shell offset/thickness, and advanced morphometry controls have not been ported. Keeping display deformation separate from quantitative comparison is important if those options are added. Evaluation currently exports individual comparisons; it does not reopen a saved evaluation session or register images, segment an electrode from CT, or infer individual contacts.

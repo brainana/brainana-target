@@ -1,0 +1,16 @@
+node_modules/
+apps/*/dist/
+apps/*/release/
+artifacts/
+release-output/
+packages/core-server/version.mjs
+.DS_Store
+*.log
+*.partial-*
+.brainana-target-cache/
+.brainana-viewer-cache/
+.env
+.env.*
+.vscode/
+.idea/
+__pycache__/

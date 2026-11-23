@@ -1,0 +1,52 @@
+appId: org.brainana.target
+productName: BrainanaTarget
+copyright: Copyright Brainana Developers
+extraMetadata:
+  name: brainana-target
+  main: apps/planner/desktop.mjs
+  description: Early-alpha anatomical targeting and implant planning
+asar: true
+asarUnpack: ['**/*.node']
+npmRebuild: true
+afterPack: ./apps/planner/build/afterPack.cjs
+directories:
+  output: apps/planner/release
+  buildResources: apps/planner/build
+files:
+  - apps/planner/desktop.mjs
+  - apps/planner/dist/**/*
+  - package.json
+  - '!**/*.ts'
+  - '!**/*.map'
+  - '!**/tests/**'
+  - '!**/*.md'
+extraResources:
+  - from: datasets/demo_viewer
+    to: demo_viewer
+  - from: apps/planner/build/icon.png
+    to: icon.png
+electronLanguages: [en-US]
+artifactName: brainana-target-${version}-${arch}.${ext}
+mac:
+  target: [dmg, zip]
+  category: public.app-category.medical
+  icon: apps/planner/build/icon.icns
+  identity: null
+win:
+  target: [nsis, zip]
+  icon: apps/planner/build/icon.ico
+  artifactName: brainana-target-${version}-windows-${arch}.${ext}
+nsis:
+  artifactName: brainana-target-setup-${version}-${arch}.${ext}
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+linux:
+  target: [AppImage, deb]
+  category: Science
+  executableName: brainana-target
+  icon: apps/planner/build/icon.png
+  maintainer: Brainana
+appImage:
+  artifactName: brainana-target-${version}-x86_64.AppImage
+deb:
+  artifactName: brainana-target-${version}-amd64.deb

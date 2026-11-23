@@ -1,0 +1,11 @@
+# CT-enabled NMT macaque demo (0.1.81)
+
+Try the macaque demo now loads the aligned MEBRAINS population CT estimate with the existing NMT2Sym MRI, brain mask, cortical surfaces, atlas labels and functional maps. The CT has the exact demo MRI grid and is blended into the slices at 50% opacity initially. It is selectable as the main anatomical image and in Image layers; disable Blend images to view it alone. The CT window starts at 350–650 in its template intensity scale.
+
+The asset is explicitly named MEBRAINS CT estimate (warped to NMT2Sym). Its derivation text and source links appear in Load images and when using the CT planning surface editor. The metadata persists in portable projects, including save/reopen. The CT is automatically selected when opening the editor for a new project with no finalized surface; other source choices remain available. Loading the CT does not finalize a skull or change the planning surface without Finalize surface.
+
+The CT NIfTI, JSON derivation/QA sidecar, attribution note and source checksum are bundled in datasets/demo_viewer/nmt2sym and in the packaged desktop resources. The source is Balan et al. (2024), MEBRAINS 1.0, https://doi.org/10.1162/imag_a_00077, CC BY 4.0. The existing RheMAP MEBRAINS-to-NMTv2.0-0.5mm-sym composite warp was used. Supplementary CT/T1 header geometry was harmonized to the matching RheMAP source after exact voxel correspondence was verified. See the JSON sidecar for the matrices, hashes, sources and numerical checks.
+
+This is a warped population estimate. Brain-registration checks do not independently establish skull accuracy; template intensities are not established to be calibrated Hounsfield units. These limitations are displayed with the asset so users can assess the source when choosing a planning surface.
+
+Verification covers bundled import, source hash, shared MRI/CT grid, initial display state, unfinalized surface state, optional derivation-reference validation and portable CT/metadata persistence. Packaged Electron tests load the fresh demo without external downloads, toggle its CT overlay, select CT-only viewing, build a live CT surface preview, and save/reopen. Existing full desktop workflows cover atlas/maps, manual placement, headpost settings and opening the CT-containing plan in evaluation.

@@ -1,0 +1,13 @@
+{
+  "app": "Brainana Target",
+  "version": "0.1.85",
+  "status": "early alpha",
+  "bundleIdentifier": "org.brainana.target",
+  "releaseName": "Brainana Target 0.1.85 \u2014 early alpha",
+  "platforms": [
+    "macOS arm64",
+    "macOS x64",
+    "Windows x64",
+    "Linux x64"
+  ]
+}

@@ -1,0 +1,100 @@
+import {chromium} from '@playwright/test'
+import assert from 'node:assert/strict'
+import {spawn} from 'node:child_process'
+import {readFile} from 'node:fs/promises'
+import {unzipSync} from 'fflate'
+import {createAsset} from '../src/data/assets.ts'
+import {packProject} from '../src/data/archive.ts'
+import {createProject,addAssembly} from '@brainana/planning-core/model.ts'
+const nmt=process.env.NMT_TEST_ZIP
+if(!nmt)throw new Error('Set NMT_TEST_ZIP to the locally supplied archive.')
+const server=spawn(process.execPath,['apps/planner/server.mjs','--port','0','--token','local-evaluation-test'],{stdio:['ignore','pipe','pipe']})
+let browser
+try{
+ const url=await new Promise((resolve,reject)=>{
+  const timer=setTimeout(()=>reject(new Error('Server start timed out')),7000)
+  server.once('error',error=>{clearTimeout(timer);reject(error)})
+  server.once('exit',code=>{clearTimeout(timer);reject(new Error('Server exited: '+code))})
+  server.stderr.on('data',data=>process.stderr.write(data))
+  server.stdout.on('data',d=>{const m=String(d).match(/http:\/\/127\.0\.0\.1:\d+/);if(m){clearTimeout(timer);resolve(m[0])}})
+ })
+ browser=await chromium.launch({channel:'chrome',headless:true,args:['--use-gl=angle','--use-angle=swiftshader-webgl','--enable-unsafe-swiftshader']})
+ const page=await browser.newPage({viewport:{width:1400,height:930}})
+ const errors=[];page.on('pageerror',e=>errors.push(e.message))
+ await page.goto(url)
+ await page.getByRole('heading',{name:'Plan targeting',exact:true}).waitFor()
+ await page.getByRole('link',{name:'Evaluate placement'}).click()
+ const tab=name=>page.getByRole('navigation',{name:'Evaluation sections'}).getByRole('button',{name,exact:true}).click()
+ const file=async(label,value)=>{const pending=page.waitForEvent('filechooser');await page.getByRole('button',{name:label,exact:true}).click();await (await pending).setFiles(value)}
+ await file('Open NMT-share ZIP…',nmt)
+ await page.getByRole('status').filter({hasText:'6 track(s) · 4 surface(s)'}).waitFor({timeout:60000})
+ assert.equal(await page.getByRole('alert').count(),0)
+ assert.equal(await page.getByLabel('CT overlay opacity').count(),0)
+ await page.getByRole('button',{name:'Stereotaxic setup…',exact:true}).click()
+ const rig=page.getByRole('dialog',{name:'Stereotaxic setup'})
+ await rig.getByRole('button',{name:'Add arm',exact:true}).click()
+ await rig.getByRole('button',{name:'Apply frame',exact:true}).click()
+ await rig.getByText('Frame applied.',{exact:true}).waitFor()
+ await rig.getByRole('button',{name:'Close Stereotaxic setup',exact:true}).click()
+ const frameToggle=page.getByRole('button',{name:'Toggle stereotax visibility in 3D',exact:true})
+ assert.equal(await frameToggle.getAttribute('aria-pressed'),'true')
+ await tab('Tracks')
+ await page.getByLabel('Cortex surface',{exact:true}).selectOption('white')
+ await page.getByLabel('Cortex shading',{exact:true}).selectOption('sulc')
+ await page.getByText('Tip to white surface',{exact:true}).waitFor()
+ await page.getByLabel('Cortex patch diameter (mm)').fill('4')
+ await page.getByLabel('Cortex patch diameter (mm)').press('Tab')
+ await page.getByLabel('3D track representation',{exact:true}).selectOption('clipped-roi')
+ const entries=unzipSync(new Uint8Array(await readFile(nmt)),{filter:f=>f.name.endsWith('/tpl-NMT2Sym_res-05_T1w.nii.gz')})
+ const ref=Object.values(entries)[0]
+ const asset=await createAsset('tpl-NMT2Sym_res-05_T1w.nii.gz','anatomy','fixture',ref)
+ const project=createProject(asset,'Evaluation browser fixture',{kind:'standalone',subject:null,scan:null,sourceRoot:null})
+ addAssembly(project,[0,0,10])
+ project.targets.push({id:'target',name:'Saved ROI',frameId:project.frame.id,point:[0,0,5],region:{kind:'sphere',radiusMm:2},color:'#00ff77',atlas:null})
+ project.electrodes[0].targetId='target'
+ project.headposts=[{id:'headpost',name:'Saved headpost',frameId:project.frame.id,pose:{origin:[1,2,3],angles:[0,0,0]},avoid:false,existing:false,reference:'custom',postHeight:5,postDiameter:2,baseDiameter:6,baseThickness:1}]
+ const packed=await packProject(project,new Map([[asset.id,ref]]))
+ await tab('Data')
+ await file('Open saved plan…',{name:'evaluation.brainana-plan',mimeType:'application/zip',buffer:Buffer.from(packed)})
+ await page.getByRole('status').filter({hasText:'1 applied shaft path(s)'}).waitFor()
+ assert.equal(await frameToggle.count(),0,'A different evaluation scope uses the saved plan frame')
+ assert.ok(await page.getByLabel('Chamber opacity in 3D').isEnabled())
+ assert.ok(await page.getByRole('button',{name:'Headposts',exact:true}).isVisible())
+ await page.getByLabel('Chamber opacity in 3D').fill('1')
+ assert.equal(await page.getByLabel('Chamber opacity in 3D').inputValue(),'1')
+ await tab('Compare')
+ await page.getByRole('button',{name:'Locate Saved ROI'}).click()
+ await page.getByLabel('Match measured track to planned shaft').selectOption({label:'Electrode 1 · shaft 1'})
+ assert.equal(await page.getByRole('button',{name:'Export comparison JSON'}).count(),0)
+ await page.getByLabel('I verified the tip endpoint in the images').check()
+ await page.getByLabel('I verified this subject and the registration to the plan reference').check()
+ await page.getByText('Tip displacement',{exact:true}).waitFor()
+ const exportReport=async()=>{
+  const download=page.waitForEvent('download')
+  await page.getByRole('button',{name:'Export comparison JSON'}).click()
+  return JSON.parse(await readFile(await (await download).path(),'utf8'))
+ }
+ const report=await exportReport()
+ assert.equal(report.plan.name,project.name)
+ assert.equal(report.reference.sha256,asset.sha256)
+ assert.ok(report.metrics.tipErrorMm>0)
+ assert.ok(report.cortex)
+ assert.equal(report.target.name,'Saved ROI')
+ assert.equal(typeof report.target.tipInside,'boolean')
+ await tab('Tracks')
+ await page.getByLabel('Hemisphere',{exact:true}).selectOption('right')
+ await tab('Compare')
+ assert.deepEqual((await exportReport()).cortex,report.cortex,'Display hemisphere cannot change a distance measurement')
+ await tab('Tracks')
+ await page.getByLabel('Cortex surface',{exact:true}).selectOption('none')
+ await tab('Compare')
+ assert.deepEqual((await exportReport()).cortex,report.cortex,'Hiding the cortex cannot remove a distance measurement')
+ await tab('Tracks')
+ await page.getByLabel('Tip endpoint',{exact:true}).selectOption('A')
+ await tab('Compare')
+ assert.equal(await page.getByRole('button',{name:'Export comparison JSON'}).count(),0)
+ await page.getByRole('link',{name:'← Home'}).click()
+ await page.getByRole('button',{name:'Try the macaque demo',exact:true}).waitFor()
+ assert.deepEqual(errors,[])
+ console.log('Browser: real NMT archive, cortex/track controls, saved plan comparison gates, JSON export and planner navigation passed.')
+}finally{await browser?.close();server.kill()}

@@ -1,0 +1,20 @@
+{
+  "name": "@brainana/planner",
+  "version": "0.1.85",
+  "private": true,
+  "type": "module",
+  "description": "Subject-specific chamber, grid and electrode planning.",
+  "dependencies": {
+    "@brainana/core-server": "*",
+    "@brainana/core-launcher": "*",
+    "@brainana/core-desktop": "*",
+    "@brainana/core-client": "*",
+    "@brainana/ui": "*",
+    "@brainana/brainana-data": "*",
+    "@brainana/planning-core": "*",
+    "@niivue/niivue": "^0.69.0",
+    "fflate": "^0.8.2",
+    "gl-matrix": "^3.4.3",
+    "@brainana/niivue-kit": "*"
+  }
+}

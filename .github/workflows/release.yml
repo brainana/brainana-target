@@ -1,0 +1,125 @@
+name: Build and release installers
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  package:
+    name: Package ${{ matrix.target }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: macos-arm64
+            os: macos-15
+            args: --mac --arm64
+          - target: macos-x64
+            os: macos-15-intel
+            args: --mac --x64
+          - target: windows-x64
+            os: windows-2022
+            args: --win --x64
+          - target: linux-x64
+            os: ubuntu-22.04
+            args: --linux --x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Check version identity
+        run: npm run ci:version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+      - name: Linux Electron and installer prerequisites
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y build-essential libgtk-3-0 libnss3 libgbm1 libasound2 libxss1 libfuse2 rpm xvfb
+      - run: npm ci
+      - name: Planning and workflow regression checks
+        run: npm test
+      - name: Build native installers
+        run: npm run planner:dist -- ${{ matrix.args }}
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - name: Inspect packaged identity and resources
+        run: npm run ci:verify
+      - name: Launch packaged app on macOS and Windows
+        if: runner.os != 'Linux'
+        run: npm run ci:smoke
+      - name: Launch packaged app on Linux
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm run ci:smoke
+      - run: python scripts/ci/collect-assets.py
+        env:
+          RELEASE_TARGET: ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installers-${{ matrix.target }}
+          path: artifacts/installers/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-${{ matrix.target }}
+          path: artifacts/validation/
+          if-no-files-found: warn
+  aggregate:
+    needs: package
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: installers-*
+          path: release-output/
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: validation-*
+          path: release-output/Validation/
+      - run: python scripts/ci/assemble-release.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: complete-release
+          path: release-output/
+          if-no-files-found: error
+  publish:
+    needs: aggregate
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: complete-release
+          path: release-output/
+      - name: Publish early-alpha prerelease after every native platform passes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --draft --prerelease --title "Brainana Target ${RELEASE_TAG} — early alpha" --notes-file Documentation/RELEASE-NOTES.md
+          fi
+          gh release upload "$RELEASE_TAG" release-output/*.{dmg,exe,deb,AppImage,zip,json,txt,md} --clobber
+          gh release edit "$RELEASE_TAG" --draft=false --prerelease

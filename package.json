@@ -1,0 +1,86 @@
+{
+  "name": "brainana-target",
+  "private": true,
+  "version": "0.1.85",
+  "type": "module",
+  "description": "Early-alpha anatomical targeting, implant planning and placement review",
+  "author": "Brainana",
+  "license": "AGPL-3.0-only",
+  "main": "apps/planner/desktop.mjs",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "generate-version": "node scripts/generate-version.mjs --app brainana-target",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "planner:build": "npm run generate-version && tsc && vite build --config apps/planner/vite.config.ts",
+    "planner:start": "node apps/planner/launch.mjs",
+    "planner:server": "node apps/planner/server.mjs",
+    "planner:desktop": "npm run planner:build && electron apps/planner/desktop.mjs",
+    "planner:test": "node --experimental-transform-types packages/planning-core/tests/surface-rays-index_test.mjs && node packages/planning-core/tests/planning_test.mjs && node packages/planning-core/tests/angled-grid_test.mjs && node packages/planning-core/tests/local-placement_test.mjs && node packages/planning-core/tests/hardware_test.mjs && node packages/planning-core/tests/manufacturer_test.mjs && node packages/planning-core/tests/optimization_test.mjs && node packages/planning-core/tests/surface-fit_test.mjs && node packages/planning-core/tests/avoidance-mask_test.mjs && node apps/planner/tests/persistence_test.mjs && node apps/planner/tests/import_test.mjs && node apps/planner/tests/volume_test.mjs && node apps/planner/tests/cutaway_test.mjs && node apps/planner/tests/atlasRegions_test.mjs && node packages/planning-core/tests/guide-tube_test.mjs && node apps/planner/tests/ct-skull_test.mjs && node apps/planner/tests/outer-skull_test.mjs && node apps/planner/tests/surface-editing_test.mjs",
+    "planner:test:browser": "node apps/planner/tests/browser-smoke.mjs",
+    "planner:dist": "npm run planner:build && electron-builder --config apps/planner/electron-builder.yml --publish never",
+    "planner:test:desktop": "node apps/planner/tests/desktop-smoke.mjs",
+    "planner:test:workflow": "node --experimental-transform-types apps/planner/tests/cortical-envelope_test.mjs && node --experimental-transform-types apps/planner/tests/placement-adjustment_test.mjs && node --experimental-transform-types apps/planner/tests/mri-completion_test.mjs && node --experimental-transform-types apps/planner/tests/io-worker_test.mjs && node --experimental-transform-types apps/planner/tests/project-exports_test.mjs && node --experimental-transform-types apps/planner/tests/scene-retention_test.mjs && node --experimental-transform-types apps/planner/tests/mesh-optimization_test.mjs && node --experimental-transform-types apps/planner/tests/render-lifecycle_test.mjs && node --experimental-transform-types apps/planner/tests/placement-tasks_test.mjs && node --experimental-transform-types apps/planner/tests/headpost-catalog_test.mjs && node --experimental-transform-types apps/planner/tests/mri-direct_test.mjs && node --experimental-transform-types apps/planner/tests/startup-layout_test.mjs && node --experimental-transform-types apps/planner/tests/target-regions_test.mjs && node --experimental-transform-types apps/planner/tests/mounting-headpost_test.mjs && node --experimental-transform-types apps/planner/tests/mri-dark-band_test.mjs && node --experimental-transform-types apps/planner/tests/mri-worker_test.mjs && node --experimental-transform-types apps/planner/tests/mri-surface_test.mjs && node --experimental-transform-types apps/planner/tests/review-performance_test.mjs && node --experimental-transform-types apps/planner/tests/planning-intent_test.mjs && node --experimental-transform-types apps/planner/tests/workflow-order_test.mjs && node --experimental-transform-types apps/planner/tests/image-editor-history_test.mjs && node --experimental-transform-types apps/planner/tests/planning-setup_test.mjs && node --experimental-transform-types apps/planner/tests/anatomy-opacity_test.mjs && node --experimental-transform-types apps/planner/tests/hover-help_test.mjs && node --experimental-transform-types apps/planner/tests/chamber-specifications_test.mjs && node --experimental-transform-types apps/planner/tests/guide-and-visibility_test.mjs && node --experimental-transform-types apps/planner/tests/target-display_test.mjs && node --experimental-transform-types apps/planner/tests/view-geometry_test.mjs && node --experimental-transform-types apps/planner/tests/placement-map_test.mjs && node --experimental-transform-types apps/planner/tests/surface-export_test.mjs && node --experimental-transform-types apps/planner/tests/avoidance-worker_test.mjs && node --experimental-transform-types apps/planner/tests/preview-state_test.mjs && node --experimental-transform-types apps/planner/tests/grid-seating-direct_test.mjs && node --experimental-transform-types apps/planner/tests/placement-feedback_test.mjs && node --experimental-transform-types apps/planner/tests/direct-worker_test.mjs && node --experimental-transform-types apps/planner/tests/evaluation_test.mjs && node --experimental-transform-types apps/planner/tests/audit-regressions_test.mjs && node --experimental-transform-types apps/planner/tests/intersections_test.mjs && node --experimental-transform-types apps/planner/tests/stereotax-catalog_test.mjs && node --experimental-transform-types apps/planner/tests/camera-zoom_test.mjs && node --experimental-transform-types apps/planner/tests/measurements_test.mjs && node --experimental-transform-types apps/planner/tests/calibration_test.mjs && node --experimental-transform-types apps/planner/tests/placement-diagnostics_test.mjs && node --experimental-transform-types apps/planner/tests/nmt-demo-ct_test.mjs && node --experimental-transform-types apps/planner/tests/ct-coverage_test.mjs && node --experimental-transform-types apps/planner/tests/demo-tutorial_test.mjs",
+    "planner:benchmark": "node --experimental-transform-types apps/planner/tests/benchmarks/optimization.mjs",
+    "planner:test:stereotax:desktop": "node --experimental-transform-types apps/planner/tests/stereotax-desktop.mjs",
+    "planner:test:demo-ct:desktop": "node --experimental-transform-types apps/planner/tests/nmt-demo-ct-desktop.mjs",
+    "planner:test:calibration:desktop": "node --experimental-transform-types apps/planner/tests/calibration-desktop.mjs",
+    "planner:test:measurements:desktop": "node --experimental-transform-types apps/planner/tests/measurements-desktop.mjs",
+    "planner:test:tutorial:desktop": "node --experimental-transform-types apps/planner/tests/demo-tutorial-desktop.mjs",
+    "build": "npm run planner:build",
+    "start": "npm run planner:start",
+    "dev": "npm run planner:desktop",
+    "server": "npm run planner:server",
+    "test": "npm run planner:test && npm run planner:test:workflow",
+    "test:desktop": "npm run planner:test:desktop",
+    "dist:desktop": "npm run planner:dist",
+    "pretest": "npm run generate-version",
+    "ci:verify": "node scripts/ci/verify-package.mjs",
+    "ci:smoke": "node scripts/ci/launch-smoke.mjs",
+    "ci:version": "node scripts/ci/check-version.mjs",
+    "set-version": "node scripts/set-version.mjs"
+  },
+  "dependencies": {
+    "@brainana/brainana-data": "*",
+    "@brainana/core-desktop": "*",
+    "@brainana/core-launcher": "*",
+    "@brainana/core-server": "*",
+    "ssh2": "^1.16.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@niivue/niivue": "^0.69.0",
+    "@playwright/test": "^1.64.0",
+    "electron": "^43.5.1",
+    "electron-builder": "^26.15.3",
+    "eslint": "^10.9.1",
+    "fake-indexeddb": "^6.2.5",
+    "fflate": "^0.8.2",
+    "globals": "^17.12.0",
+    "nifti-reader-js": "^0.8.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.69.0",
+    "vite": "^6.0.0",
+    "@electron/asar": "^4.0.1"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Edge versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions"
+  ],
+  "homepage": "https://github.com/brainana/brainana-target",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brainana/brainana-target.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brainana/brainana-target/issues"
+  }
+}

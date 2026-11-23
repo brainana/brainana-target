@@ -1,0 +1,255 @@
+{
+  "source_urls": {
+    "paper": "https://doi.org/10.1162/imag_a_00077",
+    "supplementary": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12235559/supplementaryFiles",
+    "warp": "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/warps/final/MEBRAINS_to_NMTv2.0-0.5mm-sym_CompositeWarp.nii.gz",
+    "rhemap_source_t1": "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/templates/MEBRAINS/MEBRAINS_T1_masked.nii.gz",
+    "brainana_rigid_metadata": "https://github.com/brainana/brainana/blob/main/template_zoo/template/xfm/from-MEBRAINS_to-NMT2Sym_mode-image_desc-rigid_xfm.json",
+    "inverse_affine": "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/warps/linear/NMTv2.0-0.5mm-sym_to_MEBRAINS_affine_0GenericAffine.mat",
+    "inverse_deformation": "https://gin.g-node.org/ChrisKlink/RheMAP/raw/master/warps/nonlinear/NMTv2.0-0.5mm-sym_to_MEBRAINS_1InverseWarp.nii.gz"
+  },
+  "metrics": {
+    "source_t1_voxel_correlation_to_rhemap": 0.9999969117715246,
+    "source_t1_voxels_equal_after_floor_quantization_fraction": 1.0,
+    "brain_mask_dice_identity": 0.4862085101655011,
+    "brain_mask_dice_warped": 0.9846696150624648,
+    "T1_correlation_in_brain_intersection": 0.9099957585210421,
+    "jacobian_determinant_brain_min": 0.6582114696502686,
+    "jacobian_determinant_brain_median": 1.051221251487732,
+    "jacobian_determinant_brain_max": 3.1076111793518066,
+    "nonpositive_jacobians_in_brain": 0,
+    "nonpositive_jacobians_full_field": 0,
+    "output_shape": [
+      168,
+      196,
+      140
+    ],
+    "output_spacing_mm": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "output_affine_ras": [
+      [
+        0.5,
+        -0.0,
+        -0.0,
+        -41.75
+      ],
+      [
+        -0.0,
+        0.5,
+        -0.0,
+        -37.625
+      ],
+      [
+        0.0,
+        0.0,
+        0.5,
+        -17.875
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "output_CT_range": [
+      0.0,
+      749.1958444837389
+    ],
+    "overlap_with_original_CT_max_absolute_difference": 3.5925040720030665e-11,
+    "expanded_jacobian_determinant_min": 0.1694493442773819,
+    "expanded_jacobian_determinant_max": 2.935368061065674,
+    "expanded_nonpositive_jacobians": 0,
+    "expanded_bone_contacts_at_image_faces_threshold_226": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "header_harmonization": {
+    "supplementary_original_affine": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -107.95939636230469
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -138.05630493164062
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -53.056297302246094
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "rhemap_matched_affine": [
+      [
+        0.4000000059604645,
+        0.0,
+        0.0,
+        -43.20000076293945
+      ],
+      [
+        0.0,
+        0.4000000059604645,
+        0.0,
+        -51.20000076293945
+      ],
+      [
+        0.0,
+        0.0,
+        0.4000000059604645,
+        -28.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "voxel_coordinates_unchanged": true,
+    "raw_world_to_rhemap_world": [
+      [
+        0.4000000059604645,
+        0.0,
+        0.0,
+        -0.01624157452943109
+      ],
+      [
+        0.0,
+        0.4000000059604645,
+        0.0,
+        4.022522032596498
+      ],
+      [
+        0.0,
+        0.0,
+        0.4000000059604645,
+        -6.777480762861387
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "files": {
+    "source/MEBRAINS_CT.nii.gz": {
+      "bytes": 4176435,
+      "sha256": "a593fcd376f747ef6ff3e72c7aab1e370c76d1daf06d9f5e5efc2e51e6f682f1"
+    },
+    "source/MEBRAINS_T1.nii.gz": {
+      "bytes": 25930782,
+      "sha256": "df12c08d55784a2def223e14b36d6189ca4fd1da016d3d0051108e68086a2699"
+    },
+    "source/RheMAP_MEBRAINS_T1_masked.nii.gz": {
+      "bytes": 2876311,
+      "sha256": "b1a24ae32e7943b49d0596cf1ae5e0daafea2d17793e57a47682df386f84ac96"
+    },
+    "transforms/MEBRAINS_to_NMTv2.0-0.5mm-sym_CompositeWarp.nii.gz": {
+      "bytes": 42264195,
+      "sha256": "86b097bd4aed27be65c025431790c540654e354a959ee036cc3f3018262a56f0"
+    },
+    "reference/tpl-NMT2Sym_res-05_T1w.nii.gz": {
+      "bytes": 3102168,
+      "sha256": "4f0634b517e401c0e59c5c35680419118edbe59298e4b1d3c6640f04921e60a6"
+    },
+    "reference/tpl-NMT2Sym_res-05_T1w_brain.nii.gz": {
+      "bytes": 1293688,
+      "sha256": "3f2895567d54b2562229d4e1b6ab686ada3ac426e59b4af48a52dabdab981217"
+    },
+    "reference/tpl-NMT2Sym_res-05_brainmask.nii.gz": {
+      "bytes": 30331,
+      "sha256": "95a467bde9ae7f6099c28c5627c514b9b0ec89b037ba7bb5bf9e8beec23f1007"
+    },
+    "derived/tpl-NMT2Sym_res-05_desc-MEBRAINS_CT.nii.gz": {
+      "bytes": 4988595,
+      "sha256": "88e13fb7bd700d33dd614f69e700fda0dd56bef61884c812785419ec41985590"
+    },
+    "derived/tpl-NMT2Sym_res-05_desc-MEBRAINS_T1w.nii.gz": {
+      "bytes": 14973359,
+      "sha256": "4de1fdedbbe8df098ec2cd67438094fb769798b4f85b5091e109d30e895d89bc"
+    },
+    "derived/tpl-NMT2Sym_res-05_desc-MEBRAINS_T1w_brain.nii.gz": {
+      "bytes": 5842000,
+      "sha256": "0e1640a1f8ed4d56cf2ffcb6cca1a6455e8c14aa710d74fad3b56f270d0376e2"
+    },
+    "derived/tpl-NMT2Sym_res-05_desc-MEBRAINS_brainmask.nii.gz": {
+      "bytes": 80162,
+      "sha256": "4fc4b31167939235a0bb4d0674bcb5a8d4e57406881e0bece165fddff930e206"
+    },
+    "transforms/NMTv2.0-0.5mm-sym_to_MEBRAINS_affine_0GenericAffine.mat": {
+      "bytes": 193,
+      "sha256": "1021646e39c5b99af2b0dd2a6d18661158e723296c15e064706bbf8affcae296"
+    },
+    "transforms/NMTv2.0-0.5mm-sym_to_MEBRAINS_1InverseWarp.nii.gz": {
+      "bytes": 18018388,
+      "sha256": "e6ad9738e34ceeb23c4cdb19afe4cb384f00ea10e94ea358dc710d9ae3b16c3e"
+    }
+  },
+  "limitations": [
+    "This is a warped population CT estimate, not CT acquired from the NMT subjects.",
+    "The published transform is driven by brain MRI and does not establish independent skull accuracy.",
+    "The averaged CT intensities are not established to be calibrated Hounsfield units.",
+    "Mask Dice and MRI correlation measure brain alignment, not skull-surface accuracy."
+  ],
+  "coverage": {
+    "padding_voxels_each_side": 20,
+    "method": "Original RheMAP inverse affine and inverse deformation components, in the published inverse-chain order. The precomposed MEBRAINS-to-NMT field was restricted to the MRI field of view; the original components retain the skull outside it.",
+    "deformation_extrapolated": false,
+    "holes_filled": false,
+    "original_mri_shape": [
+      128,
+      156,
+      100
+    ],
+    "original_mri_affine_ras": [
+      [
+        0.5,
+        -0.0,
+        -0.0,
+        -31.75
+      ],
+      [
+        -0.0,
+        0.5,
+        -0.0,
+        -27.625
+      ],
+      [
+        0.0,
+        0.0,
+        0.5,
+        -7.875
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "reproduction": "scripts/expand-demo-ct.py <MEBRAINS-to-NMT-bundle> --ants <antsApplyTransforms>",
+  "description": "MEBRAINS population CT estimate in NMT2Sym coordinates with expanded skull coverage. Original RheMAP registration components preserve the crown without filling bone or extrapolating a displacement field. Brain registration does not independently validate skull anatomy; intensities are not calibrated Hounsfield units."
+}
