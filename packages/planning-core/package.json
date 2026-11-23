@@ -1,6 +1,6 @@
 {
   "name": "@brainana/planning-core",
-  "version": "0.1.86",
+  "version": "0.1.87",
   "private": true,
   "type": "module",
   "description": "Renderer-independent project schema, rigid geometry, grid reachability and planning commands.",

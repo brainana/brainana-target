@@ -1,5 +1,10 @@
 # 0.1.85 — first public early alpha
 
+## 0.1.87 — Linux compiler compatibility
+
+- Pin Clang 15, whose C++20 support is required by the bundled Electron native-module headers, while retaining the Ubuntu 22.04 baseline.
+
+
 ## 0.1.86 — first downloadable early alpha
 
 - Use Clang for Electron native-module builds on Linux.

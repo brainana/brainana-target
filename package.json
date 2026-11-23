@@ -1,7 +1,7 @@
 {
   "name": "brainana-target",
   "private": true,
-  "version": "0.1.86",
+  "version": "0.1.87",
   "type": "module",
   "description": "Early-alpha anatomical targeting, implant planning and placement review",
   "author": "Brainana",
